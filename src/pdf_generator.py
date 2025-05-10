@@ -6,6 +6,21 @@ from fpdf import FPDF
 from src.utils import natural_sort_key
 
 
+class CustomPDF(FPDF):
+    """Custom PDF class that adds a footer to each page."""
+    
+    def footer(self) -> None:
+        """Add footer to each page with repository information."""
+        # Position at 1.5 cm from bottom
+        self.set_y(-15)
+        # Arial italic 8
+        self.set_font('Arial', 'I', 8)
+        # Repository link
+        self.cell(0, 10, 'Feito com Lista da vanessaDOR', 0, 0, 'R')
+        self.ln(4)
+        self.cell(0, 10, 'https://github.com/griotdev/lista-da-vanessador', 0, 0, 'R')
+
+
 def create_exercises_pdf(root_folder: str, output_file: str = "exercises.pdf") -> bool:
     """
     Create a PDF containing all C source files found in the given directory.
@@ -24,7 +39,7 @@ def create_exercises_pdf(root_folder: str, output_file: str = "exercises.pdf") -
         print(f"Error: Directory '{root_folder}' does not exist.")
         return False
         
-    pdf = FPDF()
+    pdf = CustomPDF()
     pdf.set_auto_page_break(auto=True, margin=15)
     pdf.add_page()
     pdf.set_font("Courier", size=10)
@@ -46,6 +61,7 @@ def create_exercises_pdf(root_folder: str, output_file: str = "exercises.pdf") -
                     content = file.read()
                     for line in content.split('\n'):
                         pdf.cell(0, 5, line, ln=True)
+                    pdf.cell()
             except Exception as e:
                 pdf.cell(0, 5, f"Erro ao ler arquivo {c_file}: {str(e)}", ln=True)
             
