@@ -1,0 +1,9 @@
+{
+  "compilerPath": "gcc",
+  "compilerArgs": ["-lm"],
+  "outputName": "output",
+  "runAfterCompile": true,
+  "customRunCommand": "",
+  "sourceFile": "",
+  "watchChanges": true
+}
