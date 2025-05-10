@@ -61,7 +61,6 @@ def create_exercises_pdf(root_folder: str, output_file: str = "exercises.pdf") -
                     content = file.read()
                     for line in content.split('\n'):
                         pdf.cell(0, 5, line, ln=True)
-                    pdf.cell()
             except Exception as e:
                 pdf.cell(0, 5, f"Erro ao ler arquivo {c_file}: {str(e)}", ln=True)
             

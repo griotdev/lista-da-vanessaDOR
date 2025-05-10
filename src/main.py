@@ -1,7 +1,7 @@
 """Main entry point for the PDF generator application."""
 import os
-from src.pdf_generator import create_exercises_pdf
-from src.cli import parse_arguments, get_user_input
+from src.services.pdf_generator import create_exercises_pdf
+from src.services.cli import parse_arguments, get_user_input
 
 # oi gente
 
