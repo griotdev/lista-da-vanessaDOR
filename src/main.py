@@ -15,15 +15,22 @@ def main() -> None:
     """
     args = parse_arguments()
     
-    # If command-line arguments are provided, use them
-    if args.directory and args.output:
+    # Get directory - from args or user input
+    if args.directory:
         pasta_exercicios = os.path.abspath(args.directory)
-        nome_arquivo_saida = args.output
-        if not nome_arquivo_saida.lower().endswith('.pdf'):
-            nome_arquivo_saida += '.pdf'
-    # Otherwise, get input interactively
     else:
-        pasta_exercicios, nome_arquivo_saida = get_user_input()
+        pasta_exercicios = input("Digite o caminho da pasta com os exercícios: ")
+        pasta_exercicios = os.path.abspath(pasta_exercicios)
+    
+    # Get output filename - from args or user input
+    if args.output:
+        nome_arquivo_saida = args.output
+    else:
+        nome_arquivo_saida = input("Digite o nome do arquivo PDF de saída: ")
+    
+    # Ensure the output file has .pdf extension
+    if not nome_arquivo_saida.lower().endswith('.pdf'):
+        nome_arquivo_saida += '.pdf'
     
     success = create_exercises_pdf(pasta_exercicios, nome_arquivo_saida)
     
