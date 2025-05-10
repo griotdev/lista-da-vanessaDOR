@@ -1,4 +1,4 @@
-# Lista da Wanessador
+# Lista da VanessaDOR
 
 Uma aplicação Python simples que gera um PDF contendo todos os arquivos de código fonte em C encontrados em um diretório específico.
 
