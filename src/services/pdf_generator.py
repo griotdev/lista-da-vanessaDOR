@@ -59,8 +59,16 @@ def create_exercises_pdf(root_folder: str, output_file: str = "exercises.pdf") -
             try:
                 with open(full_path, 'r', encoding='utf-8') as file:
                     content = file.read()
+                    lineNumber = 1
                     for line in content.split('\n'):
-                        pdf.cell(0, 5, line, ln=True)
+                        # Set gray color for line number
+                        pdf.set_text_color(128, 128, 128)  # Gray color
+                        pdf.cell(20, 5, f"{lineNumber}", ln=0)
+                        # Reset to black for code content
+                        pdf.set_text_color(0, 0, 0)  # Black color
+                        pdf.cell(0, 5, f"\t{line}", ln=True)
+                        lineNumber += 1
+                    pdf.cell(0, 5, f"Total de linhas: {lineNumber-1}", ln=True)
             except Exception as e:
                 pdf.cell(0, 5, f"Erro ao ler arquivo {c_file}: {str(e)}", ln=True)
             
