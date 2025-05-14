@@ -1,6 +1,8 @@
 import subprocess
+import os
 
-subprocess.run(["pyinstaller", "--noconfirm", "--onefile", "--windowed", "run.py"])
-"""
-pyinstaller --noconfirm --onefile --windowed  "/home/pedrogiroldo/Documentos/Projetos/lista-da-wanessador/run.py"
-"""
+
+if os.path.exists("lista-da-vanessador.spec"):
+    subprocess.run(["pyinstaller", "lista-da-vanessador.spec"])
+
+subprocess.run(["pyinstaller", "--noconfirm", "--onefile", "--windowed","-n","lista-da-vanessador",  "run.py"])
