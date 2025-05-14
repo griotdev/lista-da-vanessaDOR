@@ -19,6 +19,8 @@ class CustomPDF(FPDF):
         self.cell(0, 10, 'Feito com Lista da vanessaDOR', 0, 0, 'R')
         self.ln(4)
         self.cell(0, 10, 'https://github.com/griotdev/lista-da-vanessador', 0, 0, 'R')
+        self.ln(4)
+        self.cell(0, 10, 'By: André Rodrigues e Pedro Giroldo', 0, 0, 'R')
 
 
 def create_exercises_pdf(root_folder: str, output_file: str = "exercises.pdf") -> bool:
