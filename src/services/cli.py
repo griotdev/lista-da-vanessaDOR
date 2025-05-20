@@ -1,7 +1,7 @@
 """Command-line interface for the PDF generator application."""
 import os
 import argparse
-from typing import Tuple, Optional
+from typing import Tuple
 
 
 def parse_arguments() -> argparse.Namespace:
@@ -21,6 +21,11 @@ def parse_arguments() -> argparse.Namespace:
     parser.add_argument(
         "-o", "--output",
         help="Output PDF filename"
+    )
+    parser.add_argument(
+        "-g", "--gui",
+        action="store_true",
+        help="Launch the graphical user interface instead of command line"
     )
     return parser.parse_args()
 
