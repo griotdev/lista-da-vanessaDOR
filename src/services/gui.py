@@ -239,7 +239,6 @@ class PDFGeneratorGUI:
 
         # Update status and cursor
         self.status_var.set(f"⏳ Gerando PDF... Procurando arquivos .c em: {directory}")
-        self.root.config(cursor="wait")
         self.root.update()
 
         try:
